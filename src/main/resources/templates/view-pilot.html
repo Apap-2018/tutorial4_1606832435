@@ -7,6 +7,21 @@
 		<h3 th:text="'Pilot License Number : ' + ${pilot.licenseNumber}"></h3>
 		<h3 th:text="'Name : ' + ${pilot.name}"></h3>
 		<h3 th:text="'Fly Hour : ' + ${pilot.flyHour}"></h3>
+		<td><a th:href="@{'/pilot/delete/' + ${pilot.licenseNumber}}">Delete Pilot</a></td> <br>
+		<a th:href="@{'/pilot/update/' + ${pilot.licenseNumber}}">Update Pilot</a>
+		
+		<div th:each="flight : ${pilotFlights}">
+			<hr>
+			<h5 th:text="'Flight ID    : ' + ${flight.id}"></h5>
+			<h5 th:text="'Destination  : ' + ${flight.destination}"></h5>
+			<h5 th:text="'Origin       : ' + ${flight.origin}"></h5>
+			<h5 th:text="'Flight Number: ' + ${flight.flightNumber}"></h5>
+			<h5 th:text="'Schedule     : ' + ${flight.time}"></h5>
+			<td><a th:href="@{'/flight/delete/' + ${pilot.licenseNumber} + '/' + ${flight.id}}">Delete Flight</a></td>
+			<a th:href="@{'/flight/update/' + ${pilot.licenseNumber} + '/' + ${flight.id}}">Update Flight</a>
+		</div>
+		<br>
+		<hr>
 		<td><a th:href="@{'/flight/add/' + ${pilot.licenseNumber}}">Add Flight</a></td>
 	</body>
 </html>
